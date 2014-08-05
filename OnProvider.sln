@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnProvider", "OnProvider\OnProvider.csproj", "{83A9B14D-7147-4171-B001-835FFC188272}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "WixSetup", "WixSetup\WixSetup.wixproj", "{88559761-115D-4A05-A439-CF0CCF857720}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{83A9B14D-7147-4171-B001-835FFC188272} = {83A9B14D-7147-4171-B001-835FFC188272}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tkbgitvstfat11:8080/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = OnProvider\\OnProvider.csproj
+		SccProjectName1 = OnProvider
+		SccLocalPath1 = OnProvider
+		SccProjectUniqueName2 = WixSetup\\WixSetup.wixproj
+		SccProjectName2 = WixSetup
+		SccLocalPath2 = WixSetup
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83A9B14D-7147-4171-B001-835FFC188272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83A9B14D-7147-4171-B001-835FFC188272}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83A9B14D-7147-4171-B001-835FFC188272}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83A9B14D-7147-4171-B001-835FFC188272}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88559761-115D-4A05-A439-CF0CCF857720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88559761-115D-4A05-A439-CF0CCF857720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88559761-115D-4A05-A439-CF0CCF857720}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+		<Product Id="8be74396-7ec4-4c15-8a0d-17d8f09d7bba" Name="OneNote PowerShell Commands" Language="1033" Version="1.4.0.0" Manufacturer="Microsoft" UpgradeCode="a6f5db5f-093b-4fc2-8f09-90689dcf9357">
+		<Package InstallerVersion="200" Compressed="yes" Description="PowerShell commands for Microsoft OneNote" />
+
+		<Media Id="1" Cabinet="WixSetup.cab" EmbedCab="yes" />
+
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLLOCATION" Name="Microsoft.Office.OneNote.Commands">
+
+					<Component Id="ProductComponent" Guid="1f787c14-6bb0-4130-8789-6772e188248b">
+                        <File Id="license" Name="license.txt" DiskId="1" Source="license.txt" />
+                        <File Id="DLL" Name="Microsoft.Office.OneNote.Commands.dll" Source="$(var.SourcePath)\Microsoft.Office.OneNote.Commands.dll" />
+                        <File Id="WebNotebook" Name="WebNotebook.dll" Source="$(var.SourcePath)\WebNotebook.dll" />
+                        <File Id="Help" Name="Microsoft.Office.OneNote.Commands.dll-Help.xml" Source="$(var.SourcePath)\Microsoft.Office.OneNote.Commands.dll-Help.xml" />
+                        <File Id="Formatting" Name="OneNote.ps1xml" Source="$(var.SourcePath)\OneNote.ps1xml" />
+                        <File Id="StartScript" Name="Enable-OneNote.ps1" Source="$(var.SourcePath)\Enable-OneNote.ps1" />
+                        <File Id="StartScriptHelp" Name="Enable-OneNote.help.txt" Source="$(var.SourcePath)\Enable-OneNote.help.txt" />
+                        <File Id="AboutHelp" Name="about_OneNote.help.txt" Source="$(var.SourcePath)\about_OneNote.help.txt" />
+                        <File Id="Documentation" Name="OneNote Powershell Documentation.onepkg" Source="$(var.SourcePath)\OneNote Powershell Documentation.onepkg" />
+                        <RemoveFile Id="InstallState" Name="Microsoft.Office.OneNote.Commands.InstallState" On="uninstall"/>
+                        <Environment Id="MainPath" Name="Path" Action="set" Part="last" System="yes" Value="[INSTALLLOCATION]"/>
+					</Component>
+
+                    <Directory Id="Script" Name="Scripts">
+                        <Component Id="Scripts" Guid="E9DF6DF1-D749-4703-959F-A40682DCCEB8">
+                            <File Id="ExportPsOn" Name="Export-PsOn.ps1" DiskId="1" Source="$(var.SourcePath)\Scripts\Export-PsOn.ps1" />
+                            <File Id="ConvertToObject" Name="ConvertTo-Object.ps1" DiskId="1" Source="$(var.SourcePath)\Scripts\ConvertTo-Object.ps1" />
+                            <File Id="GetOneNoteApplication" Name="Get-OneNoteApplication.ps1" DiskId="1" Source="$(var.SourcePath)\Scripts\Get-OneNoteApplication.ps1" />
+                            <File Id="GetOneNoteDigest" Name="Get-OneNoteDigest.ps1" DiskId="1" Source="$(var.SourcePath)\Scripts\Get-OneNoteDigest.ps1" />
+                            <File Id="SetOneNoteDebug" Name="Set-OneNoteDebug.ps1" DiskId="1" Source="$(var.SourcePath)\Scripts\Set-OneNoteDebug.ps1" />
+                            <File Id="StartTests" Name="Start-Tests.ps1" DiskId="1" Source="$(var.SourcePath)\Scripts\Start-Tests.ps1" />
+                            <File Id="OfficeLabsDigest" Name="OfficeLabsDigest.xslt" DiskId="1" Source="$(var.SourcePath)\Scripts\OfficeLabsDigest.xslt" />
+                            <File Id="RobocopyItems" Name="Robocopy-Items.ps1" DiskId="1" Source="$(var.SourcePath)\Scripts\Robocopy-Items.ps1" />
+                            <File Id="ImportFilesToOneNote" Name="Import-FilesToOneNote.ps1" DiskId="1" Source="$(var.SourcePath)\Scripts\Import-FilesToOneNote.ps1" />
+                            <File Id="GetProviderTests" Name="Get-ProviderTests.ps1" DiskId="1" Source="$(var.SourcePath)\Scripts\Get-ProviderTests.ps1" />
+                            <File Id="CreateOneNoteDocumentation" Name="Create-OneNoteDocumentation.ps1" Source="$(var.SourcePath)\Scripts\Create-OneNoteDocumentation.ps1" />
+                            <Environment Id="UpdatePath" Name="Path" Action="set" Part="last" System="yes" Value="[Script]"/>
+                        </Component>
+                        <Component Id="ScriptHelp" Guid="500F53B1-7302-4dd2-8B74-E1E9B5D616CD">
+                            <File Id="GetOneNoteDigestHelp" Name="Get-OneNoteDigest.help.txt" DiskId="1" Source="$(var.SourcePath)\Scripts\Get-OneNoteDigest.help.txt" />
+                            <File Id="ExportPsOnHelp" Name="Export-PsOn.help.txt" DiskId="1" Source="$(var.SourcePath)\Scripts\Export-PsOn.help.txt" />
+                            <File Id="ConvertToObjectHelp" Name="ConvertTo-Object.help.txt" DiskId="1" Source="$(var.SourcePath)\Scripts\ConvertTo-Object.help.txt" />
+                            <File Id="ImportFilesToOneNoteHelp" Name="Import-FilesToOneNote.help.txt" DiskId="1" Source="$(var.SourcePath)\Scripts\Import-FilesToOneNote.help.txt" />
+                            <File Id="GetProviderTestsHelp" Name="Get-ProviderTests.help.txt" DiskId="1" Source="$(var.SourcePath)\Scripts\Get-ProviderTests.help.txt" />
+                            <File Id="StartTestsHelp" Name="Start-Tests.help.txt" DiskId="1" Source="$(var.SourcePath)\Scripts\Start-Tests.help.txt" />
+                            <File Id="CreateOneNoteDocumentationHelp" Name="Create-OneNoteDocumentation.help.txt" Source="$(var.SourcePath)\Scripts\Create-OneNoteDocumentation.help.txt" />
+                        </Component>
+                    </Directory>
+
+				</Directory>
+			</Directory>
+		</Directory>
+
+		<Feature Id="ProductFeature" Title="Main PowerShell provider and cmdlets" Level="1">
+			<ComponentRef Id="ProductComponent" />
+            <ComponentRef Id="Scripts"/>
+            <ComponentRef Id="ScriptHelp"/>
+		</Feature>
+
+            <UIRef Id="WixUI_Minimal"/>
+            <UIRef Id="WixUI_ErrorProgressText" />
+            <WixVariable Id="WixUILicenseRtf" Value="license.rtf"/>
+
+            <CustomAction Id="RegisterSnapin"
+                Directory="INSTALLLOCATION"
+                Impersonate="no" 
+                Execute="deferred" 
+                ExeCommand='"[WindowsFolder]\Microsoft.NET\Framework\v2.0.50727\installUtil.exe" /LogFile= /LogToConsole=false Microsoft.Office.OneNote.Commands.dll'
+                Return='check'>
+            </CustomAction>
+
+            <CustomAction Id='UnregisterSnapin'
+                Directory='INSTALLLOCATION'
+                Impersonate='no' 
+                Execute='deferred' 
+                ExeCommand='[WindowsFolder]\Microsoft.NET\Framework\v2.0.50727\installutil.exe /LogFile= /LogToConsole=false /u Microsoft.Office.OneNote.Commands.dll'
+                Return='check'>
+            </CustomAction>
+
+            <CustomAction Id="RegisterSnapin64"
+                Directory="INSTALLLOCATION"
+                Impersonate="no" 
+                Execute="deferred" 
+                ExeCommand='"[WindowsFolder]\Microsoft.NET\Framework64\v2.0.50727\installUtil.exe" /LogFile= /LogToConsole=false Microsoft.Office.OneNote.Commands.dll'
+                Return='check'>
+            </CustomAction>
+
+            <CustomAction Id='UnregisterSnapin64'
+                Directory='INSTALLLOCATION'
+                Impersonate="no" 
+                Execute="deferred" 
+                ExeCommand='[WindowsFolder]\Microsoft.NET\Framework64\v2.0.50727\installutil.exe /u /LogFile= /LogToConsole=false Microsoft.Office.OneNote.Commands.dll'
+                Return='check'>
+            </CustomAction>
+
+            <InstallExecuteSequence>
+                <Custom Action='RegisterSnapin' Before='InstallFinalize'>$ProductComponent &gt; 2 AND NOT VersionNT64</Custom>
+                <Custom Action='UnregisterSnapin' Before='RemoveFiles'>$ProductComponent = 2 AND NOT VersionNT64</Custom>
+                <Custom Action='RegisterSnapin64' Before='InstallFinalize'>$ProductComponent &gt; 2 AND VersionNT64</Custom>
+                <Custom Action='UnregisterSnapin64' Before='RemoveFiles'>$ProductComponent = 2 AND VersionNT64</Custom>
+            </InstallExecuteSequence>
+	</Product>
+</Wix>

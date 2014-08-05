@@ -1,0 +1,36 @@
+1) Contribution Terms: 
+
+By making submissions to this project, you represent that you authored
+the code yourself. Codebox does not accept  submissions of source code
+that is not 100% authored by Microsoft employees. You also grant users
+of this project the right to both use this code  in products that they
+are working and as part of a test or development tool either in Source
+Code form or Released Binary form.
+
+2) Source Code Usage Terms: 
+
+This code has  been authored by Microsoft  employees, and is therefore
+owned entirely by Microsoft. You may use  it the same  way as any code
+you authored  yourself --  you may    modify it, and  incorporate  the
+original  code   and your  modifications into   products that  you are
+working on (assuming of course that your team's policies permit you to
+do  this),  and   you  may  also   use the  original  code    and your
+modifications as  test  or development tools.   The code is  Microsoft
+confidential information, and therefore shouldn't be made available to
+anyone other  than Microsoft FTE's or  contractors that are performing
+work for Microsoft. If you would like to distribute  this code (or any
+of  your  modifications)  outside of   Microsoft,  talk  to  your  LCA
+contacts.
+
+3) Release Binary Usage Terms: 
+
+This  project's  release binaries  have   been authored  by  Microsoft
+employees, and  are  therefore owned  entirely  by Microsoft. You  may
+incorporate the release  binaries of this  project into products  that
+you  are working on   (assuming of course   that your team's  policies
+permit you to  do  this), and  you  may also use   them as a test   or
+development tool. The   release  binaries are Microsoft   confidential
+information, and therefore shouldn't be made available to anyone other
+than  Microsoft  FTE's or  contractors that   are performing  work for
+Microsoft. If   you would like  to  distribute these  release binaries
+outside of Microsoft, talk to your LCA contacts.
